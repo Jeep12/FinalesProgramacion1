@@ -8,6 +8,7 @@ public class Final13_12_2017 {
         int cantSecuencias = cantidadSecuencias(AR);
         char[][] MAT = new char[cantSecuencias][N];
         System.out.println(AR.length);
+        System.out.println("PRUEBA");
         for (int i = 0; i < cantSecuencias; i++) {
             int inicio = 0;
             int pos = 0;
