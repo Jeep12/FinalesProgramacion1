@@ -2,13 +2,16 @@ package Finales;
 
 public class Final13_12_2017 {
     public static final int N = 22;
-
+    
     public static void main(String[] args) {
         char[] AR = {'J', 'U', 'A', 'N', ' ', 'A', 'B', 'R', 'E', ' ', 'L', 'A', ' ', ' ', 'P', 'U', 'E', 'R', 'T', 'A', ' ', ' '};
+        //la cantidad de secuencias va a ser la cantidad de filas de la matriz
         int cantSecuencias = cantidadSecuencias(AR);
         char[][] MAT = new char[cantSecuencias][N];
         System.out.println(AR.length);
         System.out.println("PRUEBA");
+        
+        //por cada fila inserto la menor de las secuencias (por  letra inicial) y la elimino. asi la siguiente interacion la menor es otra
         for (int i = 0; i < cantSecuencias; i++) {
             int inicio = 0;
             int pos = 0;
