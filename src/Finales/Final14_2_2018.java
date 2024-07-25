@@ -11,6 +11,20 @@ public class Final14_2_2018 {
 				{ ' ', ' ', ' ', ' ', 'M', 'A', 'Ñ', 'A', 'N', 'A', ' ', ' ', 'D', 'E', ' ' } };
 		char[] AR = new char[MAXC * MAXF];
 
+		// solucion:
+		// la idea trata de obtener la cantidad de secuencias que se tienen que
+		// insertar, asi podemos iterar esta cantidad.
+
+		// teniendo las iteraciones por cantidad de secuencias, voy llenando el arreglo
+		// con la menor de las secuencias de la matriz
+
+		// inserta la menor de las secuencias
+		// la borra
+		// siguie la siguiente iteracion
+		// nueva secuencia menor pq la anterior fue eliminada
+		// se inserta
+		// la borra
+		// ...
 		int contadorInsercciones = cantidadSecuencias(MAT);
 		int inicio = 0;
 		int fin = 0;
@@ -28,6 +42,7 @@ public class Final14_2_2018 {
 						if (MAT[f][inicio] == inicialSecuenciaMenor) {
 							System.out.println("Eliminando secuencia con la inicial: " + MAT[f][inicio]);
 
+							// la ultima po,
 							copiarSecuencia(AR, MAT[f], inicio, fin, contadorAR);
 							contadorAR += (fin - inicio + 2);
 							eliminarSecuencia(MAT[f], inicio, fin);
@@ -43,6 +58,7 @@ public class Final14_2_2018 {
 		}
 		for (char c : AR) {
 			System.out.print(c);
+
 		}
 	}
 
