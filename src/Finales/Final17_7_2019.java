@@ -1,4 +1,4 @@
-package Finales.SinResolver;
+package Finales;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,25 +28,38 @@ public class Final17_7_2019 {
 
 		};
 		int cant = ingresoEntero("Ingrese un numero entero positivo");
-		
+
 		for (int f = 0; f < MAXF; f++) {
-			System.out.println("Fila Nro " + (f+1));
+			System.out.println("Fila Nro " + (f + 1));
 			int inicio = 0;
 			int fin = 0;
 			int pos = 0;
-			int contadorSec =0;
+			int contadorSec = 0;
 			while (inicio < MAXC) {
 				inicio = inicioSecuencia(matriz[f], pos);
 				contadorSec++;
 				if (inicio < MAXC) {
 					fin = finSecuencia(matriz[f], inicio);
 					System.out.println("Inicio " + inicio + " Fin " + fin + " Sec nro " + contadorSec);
-					
+					if (contadorSec >= cant) {
+						invertirSecuencia(matriz[f], inicio, fin);
+					}
+
 				}
 				pos = fin + 1;
 			}
 		}
+		imprimirMatriz(matriz);
 
+	}
+
+	public static void invertirSecuencia(int[] arr, int inicio, int fin) {
+		int longitudSecuencia = fin - inicio + 1;
+		for (int i = 0; i < longitudSecuencia/ 2; i++) {
+			int temp = arr[inicio + i];
+			arr[inicio + i] = arr[fin - i];
+			arr[fin - i] = temp;
+		}
 	}
 
 	public static int ingresoEntero(String text) {
@@ -83,4 +96,14 @@ public class Final17_7_2019 {
 		}
 
 	}
+
+	public static void imprimirMatriz(int[][] matriz) {
+		for (int f = 0; f < MAXF; f++) {
+			for (int c = 0; c < MAXC; c++) {
+				System.out.print(" |" + matriz[f][c]);
+			}
+			System.out.println();
+		}
+	}
+
 }
