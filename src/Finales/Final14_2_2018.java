@@ -70,16 +70,16 @@ public class Final14_2_2018 {
 
 	public static void eliminarSecuencia(char[] arr, int inicio, int fin) {
 		for (int i = inicio; i <= fin; i++) {
-			corrimientoIzquierda(arr, inicio);
+			corrimientoIzquierda(arr, inicio, fin);
 		}
 	}
 
-	public static void corrimientoIzquierda(char[] arr, int pos) {
-		while (pos < MAXC - 1) {
-			arr[pos] = arr[pos + 1];
-			pos++;
+	public static void corrimientoIzquierda(char[] arr, int pos, int fin) {
+		for (int i = pos; i < MAXC - 1; i++) {
+			arr[i] = arr[i + 1];
 		}
-		arr[MAXC - 1] = ' '; // Llenar el último espacio con un espacio
+		arr[fin] = ' ';
+		arr[MAXC-1] = ' ';
 	}
 
 	public static char menorInicial(char[][] matriz) {

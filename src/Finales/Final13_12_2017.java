@@ -25,7 +25,7 @@ public class Final13_12_2017 {
                     if (AR[inicio] == menor) {
                         llenarMatriz(MAT[i], AR, inicio, fin);
                         eliminarSecuencia(AR, inicio, fin);
-                        break;
+                      
                     }
                 }
                 pos = fin + 1;
