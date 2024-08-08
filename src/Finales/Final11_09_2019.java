@@ -25,7 +25,7 @@ public class Final11_09_2019 {
 
 		char[] arr = new char[MAXC * MAXF];
 		int contador = 0;
-		int cant = 1;
+		int cant = 8;
 		int index = 0;
 		for (int f = 0; f < MAXF; f++) {
 			System.out.println("Fila nro " + (f + 1));

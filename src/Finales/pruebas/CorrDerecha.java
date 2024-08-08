@@ -1,8 +1,6 @@
-package Finales;
+package Finales.pruebas;
 
-//Eliminar secuencias que tienen mas elementos impares que pares
-//
-public class Inventado2 {
+public class CorrDerecha {
 	public static final int MAXF = 4;
 	public static final int MAXC = 18;
 
@@ -14,47 +12,63 @@ public class Inventado2 {
 				{ 0, 6, 0, 5, 5, 0, 7, 0, 8, 8, 0, 4, 4, 0, 9, 9, 0, 0 },
 				{ 0, 0, 7, 8, 7, 0, 9, 0, 5, 6, 0, 4, 4, 0, 6, 6, 0, 0 } };
 
-		int cantImpares = 0;
-		int cantPares = 0;
-		for (int f = 0; f < MAXF; f++) {
-			int inicio = 0;
-			int fin = 0;
-			int pos = 0;
+//		for (int f = 0; f < MAXF; f++) {
+//			int inicio = 0;
+//			int fin = 0;
+//			int pos = 0;
+//
+//			while (inicio < MAXC) {
+//				inicio = inicioSecuencia(matriz[f], pos);
+//				if (inicio < MAXC) {
+//					fin = finSecuencia(matriz[f], inicio);
+//					int tamanio = fin - inicio + 1;
+//
+//					if (tamanio % 2 != 0) {
+//						corrimientoDerecha(matriz[f], inicio, fin);
+//					}
+//				}
+//				pos = fin + 1;
+//			}
+//
+//		}
 
-			while (inicio < MAXC) {
-				inicio = inicioSecuencia(matriz[f], pos);
-				if (inicio < MAXC) {
-					fin = finSecuencia(matriz[f], inicio); 
-					int longitud = fin - inicio + 1;
-					cantPares = cantPares(matriz[f], inicio, fin);
-					cantImpares = longitud - cantPares;
-					if (cantImpares > cantPares) {
-						eliminarSecuencia(matriz[f], inicio, fin);
-					}
+		aplanarMatriz(matriz);
+	}
+
+	public static void aplanarMatriz(int matriz[][]) {
+		int totalElementos = MAXC * MAXF;
+		for (int i = 0; i < totalElementos; i++) {
+			int fila = i / MAXC;
+			int columna = i % MAXC;
+
+			for (int j = i + 1; j < totalElementos; j++) {
+				int fila2 = j / MAXC;
+				int columna2 = j % MAXC;
+
+				if (matriz[fila][columna] > matriz[fila2][columna2]) {
+					int temp = matriz[fila][columna];
+					matriz[fila][columna] = matriz[fila2][columna2];
+					matriz[fila2][columna2] = temp;
 				}
-				pos = fin + 1;
 			}
-
+			System.out.print(" " + matriz[fila][columna]);
 		}
+	}
 
-		imprimirMatriz(matriz);
-
+	private static void corrimientoDerecha(int[] arr, int inicio, int fin) {
+		if (fin < MAXC - 1) {
+			for (int i = fin + 1; i > inicio; i--) {
+				arr[i] = arr[i - 1];
+			}
+			arr[inicio] = 0;
+		}
 	}
 
 	private static void eliminarSecuencia(int[] is, int inicio, int fin) {
 		for (int i = inicio; i <= fin; i++) {
 			corrimientoIzquierda(is, inicio);
 		}
-	}
 
-	public static int cantPares(int[] arr, int inicio, int fin) {
-		int contador = 0;
-		for (int i = inicio; i <= fin; i++) {
-			if (esPar(arr[i])) {
-				contador++;
-			}
-		}
-		return contador;
 	}
 
 	private static void corrimientoIzquierda(int[] is, int inicio) {
@@ -62,10 +76,6 @@ public class Inventado2 {
 			is[i] = is[i + 1];
 		}
 		is[MAXC - 1] = 0;
-	}
-
-	public static boolean esPar(int numero) {
-		return numero % 2 == 0;
 	}
 
 	public static int inicioSecuencia(int[] arr, int inicio) {
